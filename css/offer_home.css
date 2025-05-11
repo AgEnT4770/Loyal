@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+header {
+  background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+body {
+  background-image: url('background.jpg');
+  direction: ltr;
+}
+
+.categories-section {
+  margin-top: 10vh;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.categories-section h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.categories-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category-card i {
+  font-size: 2.5rem;
+  color: #003cff;
+  margin-bottom: 15px;
+}
+
+.category-card h3 a {
+  font-size: 1.5rem;
+  color: #78beff;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.category-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.offers-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.offers-section h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.offers-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.offer-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.offer-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.offer-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.offer-card h3 {
+  font-size: 1.5rem;
+  color: #003cff;
+  margin-bottom: 10px;
+}
+
+.offer-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.offer-card button {
+  background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  pointer-events: auto;
+}
+
+.offer-card button:hover {
+  background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+}
+
+.feedback-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.feedback-section h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.feedback-form {
+  max-width: 500px;
+  margin: 0 auto 40px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #0040ff;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: none;
+}
+
+.feedback-form button {
+  background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.feedback-form button:hover {
+  background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+}
+
+.feedback-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feedback-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(83, 181, 255, 0.2);
+}
+
+.feedback-card h4 {
+  font-size: 1.2rem;
+  color: #003cff;
+  margin-bottom: 10px;
+}
+
+.feedback-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .categories-section h1,
+  .offers-section h1 {
+    font-size: 2rem;
+  }
+
+  .feedback-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .category-card,
+  .offer-card,
+  .feedback-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-section h1,
+  .offers-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .feedback-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .category-card h3,
+  .offer-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .category-card p,
+  .offer-card p,
+  .feedback-card p {
+    font-size: 0.9rem;
+  }
+
+  .category-card i {
+    font-size: 2rem;
+  }
+
+  .offer-card button,
+  .feedback-form button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}

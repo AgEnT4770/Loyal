@@ -1,0 +1,205 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    width: 100vw;
+    background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
+    padding: 15px 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Body */
+body {
+    background-image: url('background.jpg');
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+
+/* Main Content */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Feedback Section */
+#feedback {
+    background: #a7f6ff4f; 
+    border-radius: 15px;
+    border: 1px solid rgba(148, 255, 255, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 800px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+#feedback:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#feedback h2 {
+    color: #ffffff;
+    font-size: 1.7em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Feedback Box */
+.feedback-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedback-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff, #f5f5f5);
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.feedback-content {
+    flex: 1;
+}
+
+.customer-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.feedback-content p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Delete Button */
+.delete-btn {
+    background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.delete-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    #feedback {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    #feedback h2 {
+        font-size: 1.4em;
+    }
+
+    .feedback-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .delete-btn {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    #feedback h2 {
+        font-size: 1.2em;
+    }
+
+    .customer-name {
+        font-size: 14px;
+    }
+
+    .feedback-content p {
+        font-size: 12px;
+    }
+
+    .delete-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

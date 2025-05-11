@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #ff6f61, #ffd166);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* تأثير خلفية متحرك (نفس الخلفية في Login) */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50px 50px;
+  }
+  
+  /* حاوية نموذج التسجيل */
+  .signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .signup-box {
+    background: rgba(255, 255, 255, 0.95); /* نفس تأثير الزجاج */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* الشعار */
+  .logo {
+    font-size: 35px;
+    color: #6e8efb; /* نفس لون الشعار في Login */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  /* العنوان */
+  h2 {
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  /* مجموعة الإدخال */
+  .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .input-group label i {
+    margin-right: 8px;
+    color: #6e8efb;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .input-group input:focus {
+    outline: none;
+    border-color: #6e8efb;
+    box-shadow: 0 0 8px rgba(110, 142, 251, 0.3); /* ظل أزرق عند التركيز */
+  }
+  
+  .input-group input:hover {
+    border-color: #a777e3;
+  }
+  
+  .signup-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff6f61, #ffd166);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .signup-btn:hover {
+    background: linear-gradient(90deg, #a777e3, #6e8efb); /* نفس تأثير التحويم */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
+  }
+  
+  @media (max-width: 480px) {
+    .signup-box {
+      padding: 20px;
+      max-width: 90%;
+    }
+  
+    .logo {
+      font-size: 35px;
+    }
+  
+    h2 {
+      font-size: 30px;
+    }
+  
+    .input-group input {
+      padding: 10px;
+    }
+  
+    .signup-btn {
+      padding: 10px;
+      font-size: 20px;
+    }
+  }
+  

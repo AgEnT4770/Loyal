@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-image: url('background.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensures the image covers the full page */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 20%);
+    background-size: 100px 100px;
+    animation: waveBackground 15s linear infinite;
+    z-index: -1
+}
+
+@keyframes waveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+
+header {
+    background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+    
+}
+
+nav .logo {
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    background: linear-gradient(90deg, #ffffff 0%, #00fbff 100%); /* Blue to gold */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2); /* For WebKit (Chrome, Safari) */
+    paint-order: stroke fill; /* Ensures outline is behind fill */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255);
+}
+
+
+nav ul li .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    list-style: none;
+    min-width: 150px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+nav ul li .dropdown li {
+    margin: 5px 0;
+}
+
+nav ul li .dropdown li a {
+    color: #333;
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+nav ul li .dropdown li a:hover {
+    background: rgb(16, 113, 169);
+    color: #4486c4;
+}
+
+
+main {
+    padding-top: 80px; 
+}
+
+
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hero-section p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-section .cta-btn {
+    padding: 15px 40px;
+    background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero-section .cta-btn:hover {
+    background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+        transform: scale(1.05);
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.glass-card {
+    background: #a7f6ff4f; 
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 0 20px rgba(69, 191, 207, 0.7);
+}
+
+.glass-card h2 {
+    font-size: 1.8em;
+    color: rgb(0, 187, 255);
+    margin-bottom: 15px;
+}
+
+.glass-card h2 i {
+    margin-right: 10px;
+    color: #6ae6e8;
+    font-size: 1.2em;
+}
+
+.glass-card p {
+    font-size: 1em;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+
+.glass-footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .glass-footer p {
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .glass-footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .glass-footer ul li a {
+    color: #00eaff;
+    font-size: 1.5em;
+    text-decoration: none;
+  }
+  
+  .glass-footer ul li a:hover {
+    color: #d4faff;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    nav .logo {
+        font-size: 25x;
+    }
+
+    nav ul li {
+        margin-left: 15px;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+        padding: 6px 10px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    .hero-section .cta-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .glass-card {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .glass-card h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2em;
+    }
+
+    .glass-card {
+        width: 100%;
+        margin: 10px auto;
+    }
+}

@@ -1,0 +1,364 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+header {
+  background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 30px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffe4b5;
+}
+/* Body */
+body {
+  background-image: url('background.jpg');
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Main Content */
+main {
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: rgb(255, 255, 255)
+}
+
+/* Sections */
+section {
+  margin: 20px 0;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 800px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+  color: rgb(0, 187, 255);
+  font-size: 1.7em;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+section h2 a {
+  color: #6ae6e8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+section h2 a:hover {
+  color: #6ae6e8;
+  text-decoration: underline;
+}
+
+section p {
+  color: #ffffffdc;
+  font-size: 1em;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.ous {
+  color: rgb(28, 172, 255);
+}
+
+.ins {
+  color: rgb(0, 0, 0);
+}
+
+/* Tier Boxes */
+.tier-boxes {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.tier-box {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff, #f5f5f5);
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  flex: 1 1 calc(33.333% - 10px);
+}
+
+.tier-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.tier-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tier-box:hover::before {
+  opacity: 1;
+}
+
+/* Tier Colors */
+.tier-box.gold h3,
+.tier-box.gold p {
+  color: #ffb300;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tier-box.platinum h3,
+.tier-box.platinum p {
+  color: #b0bec5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tier-box.silver h3,
+.tier-box.silver p {
+  color: #78909c;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tier-box h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tier-box p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.tier-points {
+  background: #fff;
+  height: 3px;
+  border-radius: 10px;
+  width: calc(100% - 80px);
+  margin-left: 40px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.current-points {
+  position: relative;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+  background-color: #767676;
+  width: 25%;
+  height: 3px;
+  z-index: 1;
+}
+
+.silver-limit,
+.gold-limit,
+.platinum-limit,
+.currect-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 1.5px #ffffff7d;
+}
+
+.silver-limit {
+  left: -4px;
+}
+
+.silver-limit::before,
+.gold-limit::before,
+.platinum-limit::before {
+  content: "Silver";
+  position: absolute;
+  color: #fff !important;
+  font-size: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15px;
+}
+
+.gold-limit::before {
+  color: #ffb300;
+  content: "Gold";
+}
+
+.platinum-limit::before {
+  color: #b0bec5;
+  content: "Platinum";
+}
+
+.gold-limit {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.platinum-limit {
+  right: -4px;
+}
+
+.currect-circle {
+  right: 0px;
+  background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+  width: 12px;
+  height: 12px;
+  box-shadow: 0px 0px 0px 2px #ffffff7d;
+  transform: translate(50%, -50%);
+}
+
+/* Links (Pay Now, Subscribe, Donate Now) */
+.pay-btn,
+.subscribe-btn,
+.donate-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.pay-btn:hover,
+.subscribe-btn:hover,
+.donate-btn:hover {
+  background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+  transform: scale(1.05);
+}
+
+/* Subscription Dropdowns */
+.subscription-form .options {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.subscription-form input[type="radio"] {
+  display: none;
+}
+
+.subscription-form label {
+  padding: 10px 25px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+  background-color: #fff;
+  position: relative;
+}
+.subscription-form input[type="radio"]:checked + label {
+  border-color: #ff3d00;
+  background-color: #ff3d00;
+  color: white;
+}
+.subscription-form input[type="radio"]:checked + label::after {
+  content: "✔";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+}
+
+/* Footer */
+.glass-footer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.glass-footer p {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.glass-footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.glass-footer ul li a {
+  color: #ffd700;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.glass-footer ul li a:hover {
+  color: #ffffff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

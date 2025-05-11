@@ -1,0 +1,217 @@
+header {
+    width: 100vw;
+    background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
+    padding: 22px 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+main {
+    margin: auto;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50px 50px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+
+
+
+h1 {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1s ease-in-out;
+}
+
+form {
+    margin-bottom: 20px;
+    background: rgba(249, 249, 249, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 30px;
+    width: auto;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    background: rgba(255, 255, 255, 0.5);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6ac8ff;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.delete-account {
+    text-align: center;
+}
+
+.delete-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #ff4444, #ff6666); /* لون أحمر للدلالة على الخطر */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.delete-btn:hover {
+    background: linear-gradient(90deg, #cc0000, #ff4444);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 480px) {
+    main {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    form {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        padding: 10px;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 1em;
+    }
+}
+
+.glass-footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .glass-footer p {
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .glass-footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .glass-footer ul li a {
+    color: #00eaff;
+    font-size: 1.5em;
+    text-decoration: none;
+  }
+  
+  .glass-footer ul li a:hover {
+    color: #d4faff;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  width: 100vw;
+  background: linear-gradient(to right, #ff7a6b00, #ffffff00);
+  padding: 15px 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+header {
+  background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  
+}
+
+nav .logo {
+  font-size: 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  background: linear-gradient(90deg, #ffffff 0%, #00fbff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+  paint-order: stroke fill;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  position: relative;
+  margin-left: 30px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgb(255, 255, 255);
+}
+
+
+nav ul li .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  list-style: none;
+  min-width: 150px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li:hover .dropdown {
+  display: block;
+}
+
+nav ul li .dropdown li {
+  margin: 5px 0;
+}
+
+nav ul li .dropdown li a {
+  color: #333;
+  font-size: 0.9em;
+  padding: 5px 10px;
+}
+
+nav ul li .dropdown li a:hover {
+  background: rgb(16, 113, 169);
+  color: #4486c4;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+main h1 {
+  padding-top: 50px;
+  color: #ffffff;
+  font-size: 2.8em;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, rgb(161, 227, 255), rgb(12, 86, 128));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  margin: 20px 0;
+  padding: 25px;
+  background: #a7f6ff4f; 
+  border-radius: 15px;
+  border: 1px solid rgba(120, 212, 255, 0.5);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 800px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  color: #ffffff;
+  font-size: 1.7em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(rgb(0, 162, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.card h2 a {
+  color: rgb(0, 187, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.card h2 a:hover {
+  color: #b7efff;
+  text-decoration: underline;
+}
+
+.card p {
+  color: #ffffff;
+  font-size: 1em;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.card p a {
+  color: #00d0ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.card p a:hover {
+  color: #a1e8ff;
+  text-decoration: underline;
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.card p.requierd-points,
+.card p.products {
+  font-size: 20px;
+  margin-top: 20px;
+  color: #ffffff;
+  font-weight: 750;
+}
+
+.card p span.text-s {
+  color: #00e5ff;
+}
+
+.card button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 8px 15px;
+  background: linear-gradient(90deg, rgb(16, 113, 169), #45bfcf);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+.card button:hover {
+  background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+  transform: scale(1.05);
+  cursor: pointer;
+}

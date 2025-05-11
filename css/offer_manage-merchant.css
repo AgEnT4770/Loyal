@@ -1,0 +1,269 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Body */
+body {
+    background-image: url('background.jpg');
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Main Content */
+main {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Merchants Section */
+#merchants {
+    background: #a7f6ff4f; 
+    border-radius: 15px;
+    border: 1px solid rgba(147, 239, 255, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    width: 100%;
+    max-width: 800px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+#merchants:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#merchants h2 {
+    color: rgb(0, 187, 255);
+    font-size: 1.7em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Offer Form */
+.add-offer-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+.add-offer-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-offer-container input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.add-offer-container input:focus {
+    border-color: rgb(0, 187, 255);
+    outline: none;
+}
+
+.add-merchant-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, rgb(16, 113, 169), #52c3e6); 
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.add-merchant-btn:hover {
+    background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+    transform: scale(1.05);
+}
+
+/* Merchant Box */
+.merchant-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.merchant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff, #f5f5f5);
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.merchant-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.merchant-item p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Merchant Actions */
+.merchant-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.update-btn, .delete-btn {
+    background: linear-gradient(135deg, rgb(16, 113, 169), #52c3e6); 
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.update-btn:hover, .delete-btn:hover {
+    background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #merchants {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    #merchants h2 {
+        font-size: 1.4em;
+    }
+
+    .merchant-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .merchant-actions {
+        align-self: flex-end;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .add-offer-container input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .add-merchant-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #merchants h2 {
+        font-size: 1.2em;
+    }
+
+    .merchant-item p {
+        font-size: 12px;
+    }
+
+    .update-btn, .delete-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .add-offer-container input {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .add-merchant-btn {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+/* Update Offer Form */
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.update-form input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.update-form input:focus {
+    border-color: rgb(0, 187, 255);
+    outline: none;
+}
+
+/* Increase width of rating input */
+.update-form input[name="rating"] {
+    width: 100%;
+    max-width: 200px; /* Adjust width for better visibility */
+}
