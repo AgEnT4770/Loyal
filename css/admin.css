@@ -184,7 +184,6 @@ main h1 {
     color: rgb(0, 187, 255);
 }
 
-/* ==================== TABLE STYLES ==================== */
 .glass-card table {
     width: 100%;
     border-collapse: separate;
@@ -228,7 +227,6 @@ main h1 {
     transform: translateX(5px);
 }
 
-/* Subscription type colors */
 .glass-card td:nth-child(3) {
     font-weight: bold;
     position: relative;
@@ -262,8 +260,6 @@ main h1 {
     color: #ff7a6b;
 }
 
-
-/* Responsive table */
 @media (max-width: 768px) {
     .glass-card table {
         display: block;

@@ -7,22 +7,19 @@ class User {
     protected $password;
     protected $role;
 
-    // Constructor to initialize user object
     public function __construct($user_id, $name, $email, $password, $role) {
         $this->user_id = $user_id;
         $this->name = $name;
         $this->email = $email;
-        $this->setPassword($password); // Hash password before storing
+        $this->setPassword($password);
         $this->role = $role;
     }
 
-    // Getters
     public function getUserId() { return $this->user_id; }
     public function getName() { return $this->name; }
     public function getEmail() { return $this->email; }
     public function getRole() { return $this->role; }
 
-    // Setters with validation
     public function setUserId($user_id) { $this->user_id = $user_id; }
     public function setName($name) { $this->name = $name; }
     
@@ -33,7 +30,6 @@ class User {
         $this->email = $email;
     }
 
-    // Encapsulated password handling
     public function setPassword($password) {
         $this->password = password_hash($password, PASSWORD_DEFAULT);
     }

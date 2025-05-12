@@ -14,7 +14,6 @@ body {
     overflow: hidden;
 }
 
-/* تأثير خلفية متحرك (نفس الخلفية في Login) */
 body::before {
     content: '';
     position: absolute;
@@ -26,8 +25,6 @@ body::before {
    
 }
 
-
-/* حاوية نموذج التسجيل */
 .signup-container {
     display: flex;
     justify-content: center;
@@ -38,7 +35,7 @@ body::before {
 }
 
 .signup-box {
-    background: rgba(255, 255, 255, 0.95); /* نفس تأثير الزجاج */
+    background: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -49,30 +46,27 @@ body::before {
     backdrop-filter: blur(10px);
 }
 
-/* الشعار */
 .logo {
     font-size: 2em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 10px;
-    background: linear-gradient(90deg, #ffffff 0%, #00fbff 100%); /* Blue to gold */
+    background: linear-gradient(90deg, #ffffff 0%, #00fbff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2); /* For WebKit (Chrome, Safari) */
-    paint-order: stroke fill; /* Ensures outline is behind fill */
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+    paint-order: stroke fill;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding-bottom: 20px;
 }
 
-/* العنوان */
 h2 {
     font-size: 25px;
     color: #333;
     margin-bottom: 30px;
 }
 
-/* مجموعة الإدخال */
 .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -104,7 +98,7 @@ h2 {
 .input-group select:focus {
     outline: none;
     border-color: #8af1ff6e;
-    box-shadow: 0 0 8px rgba(110, 142, 251, 0.3); /* ظل أزرق عند التركيز */
+    box-shadow: 0 0 8px rgba(110, 142, 251, 0.3);
 }
 
 .input-group input:hover,
@@ -127,7 +121,7 @@ h2 {
 }
 
 .signup-btn:hover {
-    background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169)); /* نفس تأثير التحويم */
+    background: linear-gradient(90deg, #45bfcf, rgb(16, 113, 169));
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(110, 220, 251, 0.4);
 }

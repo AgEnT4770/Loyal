@@ -1,16 +1,15 @@
 <?php
-require_once 'User.php'; // Ensure User class is included
-require_once '../db.php'; // Include Database class
+require_once 'User.php';
+require_once '../db.php';
 
 class Admin extends User {
     private $db;
 
     public function __construct($user_id, $name, $email, $password) {
         parent::__construct($user_id, $name, $email, $password, "admin");
-        $this->db = Database::getInstance()->getConnection(); // Get DB connection
+        $this->db = Database::getInstance()->getConnection();
     }
 
-    // Admin-specific functionality
     public function manageUsers() {
         return "Admin {$this->name} is managing users.";
     }
@@ -19,7 +18,6 @@ class Admin extends User {
         return "Admin {$this->name} is viewing reports.";
     }
 
-    // Fetch all users from the database
     public function getAllUsers() {
         $sql = "SELECT id, name, email, role FROM users";
         $stmt = $this->db->prepare($sql);
@@ -28,7 +26,6 @@ class Admin extends User {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Delete a user from the database
     public function deleteUser($userId) {
         $sql = "DELETE FROM users WHERE id = ?";
         $stmt = $this->db->prepare($sql);

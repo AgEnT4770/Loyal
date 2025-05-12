@@ -1,6 +1,6 @@
 <?php
-require_once 'User.php'; // Ensure User class is included
-require_once '../db.php'; // Include Database class
+require_once 'User.php';
+require_once '../db.php';
 
 class Merchant extends User {
     private $merchantName;
@@ -9,21 +9,18 @@ class Merchant extends User {
 
     public function __construct($user_id, $name, $email, $password, $merchantName = null) {
         parent::__construct($user_id, $name, $email, $password, "merchant");
-        $this->merchantName = $merchantName ?? $name; // Default to personal name if not set
-        $this->db = Database::getInstance()->getConnection(); // Get DB connection
+        $this->merchantName = $merchantName ?? $name;
+        $this->db = Database::getInstance()->getConnection();
     }
 
-    // Getters
     public function getMerchantName() { return $this->merchantName; }
     public function getOffers() { return $this->offers; }
 
-    // Setters
     public function setMerchantName($merchantName) { 
         $this->merchantName = $merchantName; 
         $this->updateMerchantNameInDB();
     }
 
-    // Merchant-specific functionality
     public function addOffer($offer) {
         $this->offers[] = $offer;
         $this->insertOfferIntoDB($offer);
@@ -34,7 +31,6 @@ class Merchant extends User {
         return "Merchant {$this->name} is viewing transactions.";
     }
 
-    // Update merchant name in the database
     private function updateMerchantNameInDB() {
         $sql = "UPDATE users SET merchant_name = ? WHERE id = ?";
         $stmt = $this->db->prepare($sql);
@@ -42,7 +38,6 @@ class Merchant extends User {
         $stmt->execute();
     }
 
-    // Insert new offer into the database
     private function insertOfferIntoDB($offer) {
         $sql = "INSERT INTO offers (merchant_id, offer_details) VALUES (?, ?)";
         $stmt = $this->db->prepare($sql);

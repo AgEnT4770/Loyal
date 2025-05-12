@@ -1,14 +1,12 @@
 <?php
 session_start();
-require_once '../db.php'; // Database connection
+require_once '../db.php';
 
-// Ensure admin is logged in
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: index.html");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
 
 $error_message = "";
@@ -20,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Check if email or name already exists
     $check_sql = "SELECT id FROM users WHERE name = ? OR email = ?";
     $check_stmt = $db->prepare($check_sql);
     $check_stmt->bind_param("ss", $name, $email);
@@ -30,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($check_result->num_rows > 0) {
         $error_message = "The username or email already exists.";
     } else {
-        // Insert new user
         $sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)";
         $stmt = $db->prepare($sql);
         $stmt->bind_param("ssss", $name, $email, $password, $role);

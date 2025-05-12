@@ -1,17 +1,13 @@
 <?php
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
-// Ensure admin is logged in
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: index.html");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
-
-// Fetch users (customers & merchants) with emails, roles, and loyalty points
 $sql = "SELECT name, email, role, loyaltyPoints FROM users";
 $stmt = $db->prepare($sql);
 $stmt->execute();

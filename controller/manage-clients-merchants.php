@@ -1,17 +1,14 @@
 <?php
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
-// Ensure admin is logged in
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: index.html");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
 
-// Fetch customers and merchants
 $sql = "SELECT id, name, email, role FROM users WHERE role IN ('customer', 'merchant') ORDER BY role";
 $stmt = $db->prepare($sql);
 $stmt->execute();
@@ -40,7 +37,6 @@ $result = $stmt->get_result();
     <main>
         <h1>Managing Users</h1>
         <div class="report-container">
-            <!-- Customers Section -->
             <section id="customer-section">
                 <h2>Customers</h2>
                 <div class="search-bar">
@@ -66,7 +62,6 @@ $result = $stmt->get_result();
                 </div>
             </section>
 
-            <!-- Merchants Section -->
             <section id="merchant-section">
                 <h2>Merchants</h2>
                 <div class="search-bar">
@@ -77,8 +72,7 @@ $result = $stmt->get_result();
                 </button>
                 <div class="merchant-list" id="merchant-list">
                     <?php
-                    // Reset result set for merchants
-                    $stmt->execute(); // Re-run the query
+                    $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
                         if ($row['role'] == 'merchant') {

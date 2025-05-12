@@ -1,12 +1,11 @@
 <?php
 class Database {
-    private $host = "localhost"; // Change if needed
-    private $username = "root"; // Your DB username
-    private $password = ""; // Your DB password
-    private $dbname = "loyalty_db"; // Your database name
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "loyalty_db";
     private $conn;
     
-    // Singleton pattern: Ensure only one connection instance
     private static $instance = null;
 
     private function __construct() {
@@ -17,7 +16,6 @@ class Database {
         }
     }
 
-    // Get the database instance
     public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new Database();
@@ -25,7 +23,6 @@ class Database {
         return self::$instance;
     }
 
-    // Get the connection
     public function getConnection() {
         return $this->conn;
     }

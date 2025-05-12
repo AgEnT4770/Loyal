@@ -1,17 +1,13 @@
 <?php
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
-// Ensure the admin is logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php?error=You must log in as an admin!");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
-
-// Handle feedback deletion
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-feedback'])) {
     $feedbackId = $_POST['feedback-id'];
 
@@ -28,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-feedback'])) {
     }
 }
 
-// Fetch feedback from the database
 $sql = "SELECT id, customer_name, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
 $result = $db->query($sql);
 $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
@@ -56,7 +51,6 @@ $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
         <section id="feedback">
             <h2>Customer Feedback</h2>
 
-            <!-- Display Success or Error Messages -->
             <?php if (isset($_GET['success'])) { ?>
                 <p class="success-message"><?php echo htmlspecialchars($_GET['success']); ?></p>
             <?php } ?>
@@ -65,7 +59,6 @@ $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
             <?php } ?>
 
             <div class="feedback-box">
-                <!-- Dynamically Display Feedback from Database -->
                 <?php if (count($feedbacks) > 0) { ?>
                     <?php foreach ($feedbacks as $feedback) { ?>
                         <div class="feedback-item">

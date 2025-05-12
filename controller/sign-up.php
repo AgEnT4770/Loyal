@@ -1,14 +1,13 @@
 <?php
-include '../db.php'; // Include database connection
-include '../models/User.php'; // Include User class
-include '../models/Admin.php'; // Include Admin class
-include '../models/Merchant.php'; // Include Merchant class
-include '../models/Customer.php'; // Include Customer class
-session_start(); // Start session for logged-in user handling
+include '../db.php';
+include '../models/User.php';
+include '../models/Admin.php';
+include '../models/Merchant.php';
+include '../models/Customer.php';
+session_start();
 
-$error_message = ""; // Store error messages for duplicate users or other errors
+$error_message = "";
 
-// Get database connection using Singleton pattern
 $db = Database::getInstance()->getConnection();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $role = $_POST['user-type'];
 
-    // Check if the username or email already exists
     $check_sql = "SELECT * FROM users WHERE name = ? OR email = ?";
     $check_stmt = $db->prepare($check_sql);
     $check_stmt->bind_param("ss", $name, $email);
@@ -27,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($check_result->num_rows > 0) {
         $error_message = "The email or username already exists. Please choose another.";
     } else {
-        // Create appropriate object based on role
         if ($role === "admin") {
             $newUser = new Admin(null, $name, $email, $password);
         } elseif ($role === "merchant") {
@@ -40,20 +37,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        // Insert new user into the database
         $sql = "INSERT INTO users (name, email, password, role, subscription, loyaltyPoints, merchant_name) VALUES (?, ?, ?, ?, 'None', 0, ?)";
         $stmt = $db->prepare($sql);
         $stmt->bind_param("sssssi", 
             $newUser->getName(), 
             $newUser->getEmail(), 
-            password_hash($password, PASSWORD_DEFAULT), // Hash password securely
+            password_hash($password, PASSWORD_DEFAULT),
             $newUser->getRole(),
-            ($role === "customer" ? NULL : $newUser->getName()) // Set merchant_name = name for merchants
+            ($role === "customer" ? NULL : $newUser->getName())
 );
 
 
         if ($stmt->execute()) {
-            // Retrieve the newly created user ID and store session variables using getters
             $_SESSION['user_id'] = $db->insert_id;
             $_SESSION['username'] = $newUser->getName();
             $_SESSION['email'] = $newUser->getEmail();
@@ -83,8 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="signup-box">
             <h1 class="logo">Loyal</h1>
             <h2>Sign Up for an Account</h2>
-
-            <!-- Display Error Message -->
+            
             <?php if (!empty($error_message)) { ?>
                 <p class="error-message"><?php echo htmlspecialchars($error_message); ?></p>
             <?php } ?>

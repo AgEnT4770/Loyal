@@ -1,21 +1,18 @@
 <?php
 session_start();
-require_once '../db.php'; // Database connection
+require_once '../db.php';
 
-// Ensure admin is logged in
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: index.html");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
 
 $error_message = "";
 $success_message = "";
 $user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Fetch user details
 $sql = "SELECT name, email FROM users WHERE id = ?";
 $stmt = $db->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -32,8 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
-
-    // Update user details
     if ($password) {
         $update_sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
         $update_stmt = $db->prepare($update_sql);

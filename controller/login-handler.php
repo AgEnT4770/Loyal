@@ -1,20 +1,17 @@
 <?php
-session_start(); // Start the session
-include '../db.php'; // Include database connection
-include '../models/User.php'; // Include User class
-include '../models/Admin.php'; // Include Admin class
-include '../models/Merchant.php'; // Include Merchant class
-include '../models/Customer.php'; // Include Customer class
+session_start();
+include '../db.php';
+include '../models/User.php';
+include '../models/Admin.php';
+include '../models/Merchant.php';
+include '../models/Customer.php';
 
-// Get database connection using Singleton pattern
 $db = Database::getInstance()->getConnection();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $role = $_POST['user-type'];
-
-    // Fetch user from database
     $sql = "SELECT * FROM users WHERE name = ? AND role = ?";
     $stmt = $db->prepare($sql);
     if (!$stmt) {
@@ -28,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $userData = $result->fetch_assoc();
 
-        // Create appropriate object based on role
         if ($role === "admin") {
             $user = new Admin($userData['id'], $userData['name'], $userData['email'], $userData['password']);
         } elseif ($role === "merchant") {
@@ -41,15 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        // Verify password using encapsulated method
         if ($user->verifyPassword($password)) {
-            // Set session variables securely using getters
             $_SESSION['user_id'] = $user->getUserId();
             $_SESSION['username'] = $user->getName();
             $_SESSION['email'] = $user->getEmail();
             $_SESSION['role'] = $user->getRole();
-
-            // Redirect based on role
             header("Location: " . ($user->getRole() === "customer" ? "customer.php" : ($user->getRole() === "merchant" ? "../views/merchant-dashboard.php" : "../views/admin.php")));
             exit();
         } else {
@@ -58,8 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error_message = "Invalid username or password.";
     }
-
-    // Redirect back to login with error message
     header("Location: login.php?error=" . urlencode($error_message));
     exit();
 }

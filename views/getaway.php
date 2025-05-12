@@ -1,18 +1,15 @@
 <?php
 session_start();
-require_once '../db.php'; // Database connection
+require_once '../db.php';
 
-// Ensure client is logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
     header("Location: index.html");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
 $user_id = $_SESSION['user_id'];
 
-// Fetch current loyalty points
 $sql = "SELECT loyaltyPoints FROM users WHERE id = ?";
 $stmt = $db->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -26,9 +23,8 @@ if (!$user) {
 }
 
 $current_points = intval($user['loyaltyPoints']);
-$new_points = max(0, $current_points - 500); // Prevent negative points
+$new_points = max(0, $current_points - 500);
 
-// Deduct points on checkout
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout'])) {
     if ($current_points < 500) {
         echo "<script>alert('Insufficient points!'); window.location.href='offer-home.php';</script>";

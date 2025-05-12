@@ -1,8 +1,6 @@
 <?php
-// Start the session to access user data
 session_start();
 
-// Fetch session data for logged-in customer
 $customer_name = isset($_SESSION['username']) ? $_SESSION['username'] : "Customer Name";
 $customer_email = isset($_SESSION['email']) ? $_SESSION['email'] : "customer@example.com";
 ?>
@@ -26,7 +24,6 @@ $customer_email = isset($_SESSION['email']) ? $_SESSION['email'] : "customer@exa
         </nav>
     </header>
     <main>
-        <!-- Enhanced Glass Card Design -->
         <h1>Edit Profile</h1>
         <section class="temp">
             <form id="edit-profile-form" method="POST" action="../controller/update-profile.php">
@@ -65,7 +62,6 @@ $customer_email = isset($_SESSION['email']) ? $_SESSION['email'] : "customer@exa
     <script>
         function deleteAccount(email) {
             if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
-                // Redirect to delete-user.php with email parameter
                 window.location.href = "delete-user.php?email=" + encodeURIComponent(email);
             }
         }

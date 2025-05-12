@@ -19,8 +19,8 @@ nav ul li a {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif; /* الخط: Montserrat */
-    background: linear-gradient(135deg, #ff6f61, #ffcc5c); /* تدرج برتقالي وأصفر */
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ff6f61, #ffcc5c);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -42,7 +42,6 @@ header {
     position: relative;
     z-index: 1;
     width: 100%;
-    /* display: flex; */
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;

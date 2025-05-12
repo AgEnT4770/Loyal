@@ -1,4 +1,3 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +26,7 @@ nav a {
 nav a:hover {
   color: #ffe4b5;
 }
-/* Body */
+
 body {
   background-image: url('background.jpg');
   min-height: 100vh;
@@ -35,7 +34,6 @@ body {
   position: relative;
 }
 
-/* Main Content */
 main {
   padding: 80px 20px;
   display: flex;
@@ -51,7 +49,6 @@ main h1 {
   color: rgb(255, 255, 255)
 }
 
-/* Sections */
 section {
   margin: 20px 0;
   padding: 25px;
@@ -103,7 +100,6 @@ section p {
   color: rgb(0, 0, 0);
 }
 
-/* Tier Boxes */
 .tier-boxes {
   display: flex;
   justify-content: space-between;
@@ -148,7 +144,6 @@ section p {
   opacity: 1;
 }
 
-/* Tier Colors */
 .tier-box.gold h3,
 .tier-box.gold p {
   color: #ffb300;
@@ -258,7 +253,6 @@ section p {
   transform: translate(50%, -50%);
 }
 
-/* Links (Pay Now, Subscribe, Donate Now) */
 .pay-btn,
 .subscribe-btn,
 .donate-btn {
@@ -283,7 +277,6 @@ section p {
   transform: scale(1.05);
 }
 
-/* Subscription Dropdowns */
 .subscription-form .options {
   display: flex;
   justify-content: center;
@@ -320,7 +313,6 @@ section p {
   font-size: 14px;
 }
 
-/* Footer */
 .glass-footer {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
@@ -351,7 +343,6 @@ section p {
   color: #ffffff;
 }
 
-/* Animations */
 @keyframes fadeIn {
   0% {
     opacity: 0;

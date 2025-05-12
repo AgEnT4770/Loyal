@@ -1,6 +1,6 @@
 <?php
-require_once 'User.php'; // Ensure User class is included
-require_once '../db.php'; // Include Database class
+require_once 'User.php';
+require_once '../db.php';
 
 class Customer extends User {
     private $loyaltyPoints;
@@ -11,14 +11,12 @@ class Customer extends User {
         parent::__construct($user_id, $name, $email, $password, "customer");
         $this->loyaltyPoints = $loyaltyPoints;
         $this->subscription = $subscription;
-        $this->db = Database::getInstance()->getConnection(); // Get DB connection
+        $this->db = Database::getInstance()->getConnection();
     }
 
-    // Getters
     public function getLoyaltyPoints() { return $this->loyaltyPoints; }
     public function getSubscription() { return $this->subscription; }
 
-    // Setters
     public function setLoyaltyPoints($points) { 
         $this->loyaltyPoints = $points; 
         $this->updateLoyaltyPointsInDB();
@@ -29,7 +27,6 @@ class Customer extends User {
         $this->updateSubscriptionInDB();
     }
 
-    // Customer-specific functionality
     public function redeemRewards() {
         return "Customer {$this->name} is redeeming rewards.";
     }
@@ -40,7 +37,6 @@ class Customer extends User {
         return "Customer {$this->name} subscribed to {$offer}.";
     }
 
-    // Update loyalty points in the database
     private function updateLoyaltyPointsInDB() {
         $sql = "UPDATE users SET loyaltyPoints = ? WHERE id = ?";
         $stmt = $this->db->prepare($sql);
@@ -48,7 +44,6 @@ class Customer extends User {
         $stmt->execute();
     }
 
-    // Update subscription in the database
     private function updateSubscriptionInDB() {
         $sql = "UPDATE users SET subscription = ? WHERE id = ?";
         $stmt = $this->db->prepare($sql);

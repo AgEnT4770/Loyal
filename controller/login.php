@@ -1,12 +1,10 @@
 <?php
-session_start(); // Start session
-include '../db.php'; // Include database connection
-include '../models/User.php'; // Include User class
-include '../models/Admin.php'; // Include Admin class
-include '../models/Merchant.php'; // Include Merchant class
-include '../models/Customer.php'; // Include Customer class
-
-// Redirect logged-in users to their dashboard instead of showing login page
+session_start();
+include '../db.php';
+include '../models/User.php';
+include '../models/Admin.php';
+include '../models/Merchant.php';
+include '../models/Customer.php';
 if (isset($_SESSION['username']) && isset($_SESSION['role'])) {
     $redirectPage = $_SESSION['role'] === "customer" ? "customer.php" :
                     ($_SESSION['role'] === "merchant" ? "../views/merchant-dashboard.php" : "../views/admin.php");
@@ -14,7 +12,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['role'])) {
     exit();
 }
 
-// Capture errors from login-handler.php (if any)
 $error_message = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
 ?>
 
@@ -34,7 +31,6 @@ $error_message = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
             <h1 class="logo">Loyal</h1>
             <h2>Login to Your Account</h2>
 
-            <!-- Display Error Message -->
             <?php if (!empty($error_message)) { ?>
                 <p class="error-message"><?php echo htmlspecialchars($error_message); ?></p>
             <?php } ?>

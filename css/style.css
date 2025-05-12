@@ -6,10 +6,10 @@
 }
 
 body {
-    background-image: url('background.jpg'); /* Replace with your image path */
-    background-size: cover; /* Ensures the image covers the full page */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
@@ -58,12 +58,12 @@ nav .logo {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 10px;
-    background: linear-gradient(90deg, #ffffff 0%, #00fbff 100%); /* Blue to gold */
+    background: linear-gradient(90deg, #ffffff 0%, #00fbff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2); /* For WebKit (Chrome, Safari) */
-    paint-order: stroke fill; /* Ensures outline is behind fill */
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+    paint-order: stroke fill;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 

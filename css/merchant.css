@@ -141,7 +141,6 @@ section i {
     color: #d4faff;
   }
   
-  /* Animations */
   @keyframes fadeIn {
     0% {
       opacity: 0;

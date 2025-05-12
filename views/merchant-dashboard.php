@@ -1,18 +1,15 @@
 <?php
-session_start(); // Start session
-require_once '../db.php'; // Include database connection
-require_once '../models/Merchant.php'; // Include Merchant class
+session_start();
+require_once '../db.php';
+require_once '../models/Merchant.php';
 
-// Redirect to login if merchant is not logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'merchant') {
     header("Location: login.php");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
 
-// Fetch merchant details
 $merchantId = $_SESSION['user_id'];
 $sql = "SELECT id, merchant_name, email FROM users WHERE id = ?";
 $stmt = $db->prepare($sql);
@@ -20,8 +17,6 @@ $stmt->bind_param("i", $merchantId);
 $stmt->execute();
 $result = $stmt->get_result();
 $merchantData = $result->fetch_assoc();
-
-// Assign merchant details
 $merchantName = $merchantData['merchant_name'];
 $merchantEmail = $merchantData['email'];
 ?>

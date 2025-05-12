@@ -14,7 +14,6 @@ body {
   overflow: hidden;
 }
 
-/* تأثير خلفية متحرك (نفس الخلفية في Login) */
 body::before {
   content: "";
   position: absolute;
@@ -25,7 +24,6 @@ body::before {
   background-size: 50px 50px;
 }
 
-/* حاوية نموذج التسجيل */
 .signup-container {
   display: flex;
   justify-content: center;
@@ -36,7 +34,7 @@ body::before {
 }
 
 .signup-box {
-  background: rgba(255, 255, 255, 0.95); /* نفس تأثير الزجاج */
+  background: rgba(255, 255, 255, 0.95);
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -47,24 +45,21 @@ body::before {
   backdrop-filter: blur(10px);
 }
 
-/* الشعار */
 .logo {
   font-size: 35px;
-  color: #6e8efb; /* نفس لون الشعار في Login */
+  color: #6e8efb;
   margin-bottom: 20px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-/* العنوان */
 h2 {
   font-size: 25px;
   color: #333;
   margin-bottom: 30px;
 }
 
-/* مجموعة الإدخال */
 .input-group {
   margin-bottom: 20px;
   text-align: left;
@@ -94,7 +89,7 @@ h2 {
 .input-group input:focus {
   outline: none;
   border-color: #6e8efb;
-  box-shadow: 0 0 8px rgba(110, 142, 251, 0.3); /* ظل أزرق عند التركيز */
+  box-shadow: 0 0 8px rgba(110, 142, 251, 0.3);
 }
 
 .input-group input:hover {
@@ -115,7 +110,7 @@ h2 {
 }
 
 .signup-btn:hover {
-  background: linear-gradient(90deg, #a777e3, #6e8efb); /* نفس تأثير التحويم */
+  background: linear-gradient(90deg, #a777e3, #6e8efb);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
 }

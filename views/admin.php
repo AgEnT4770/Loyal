@@ -1,8 +1,7 @@
 <?php
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
-// Ensure the admin is logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php?error=You must log in as an admin!");
     exit();

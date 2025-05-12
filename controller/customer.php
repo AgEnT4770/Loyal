@@ -1,18 +1,13 @@
 <?php
-// Start session to manage logged-in customer data
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
-// Redirect to login if customer is not logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
     header("Location: login.php");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
-
-// Fetch customer details
 $customerId = $_SESSION['user_id'];
 $sql = "SELECT name, email, loyaltyPoints, subscription FROM users WHERE id = ?";
 $stmt = $db->prepare($sql);
@@ -20,8 +15,6 @@ $stmt->bind_param("i", $customerId);
 $stmt->execute();
 $result = $stmt->get_result();
 $customerData = $result->fetch_assoc();
-
-// Assign customer details
 $username = $customerData['name'];
 $email = $customerData['email'];
 $loyaltyPoints = $customerData['loyaltyPoints'];
@@ -38,7 +31,6 @@ $subscription = $customerData['subscription'];
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo">Loyal</div>
@@ -47,13 +39,8 @@ $subscription = $customerData['subscription'];
             </ul>
         </nav>
     </header>
-
-    <!-- Main Content -->
     <main>
-        <!-- Personalized Greeting -->
         <h1>Welcome, <?php echo htmlspecialchars($username); ?></h1>
-
-        <!-- Profile Management Section -->
         <section id="profile-management">
             <h2>Profile Management</h2>
             <p>Email: <?php echo htmlspecialchars($email); ?></p>
@@ -61,13 +48,11 @@ $subscription = $customerData['subscription'];
             <p><a href="../views/customer-profile.php">Edit Profile Details</a></p>
         </section>
 
-        <!-- Points Accumulation Section -->
         <section id="points-accumulation">
             <h2>Points Accumulation</h2>
             <p>Total Points: <?php echo htmlspecialchars($loyaltyPoints); ?> | Redeem Points: 100</p>
         </section>
 
-        <!-- Tiered System Section -->
         <section id="tiered-system">
             <h2>Tiered System</h2>
             <p>Current Subscription: <strong><?php echo htmlspecialchars($subscription); ?></strong></p>
@@ -96,7 +81,6 @@ $subscription = $customerData['subscription'];
             </div>
         </section>
 
-        <!-- Subscription System Section -->
         <section id="subscription">
             <h2>Newsletter Subscription</h2>
             <p>Choose your subscription plan:</p>
@@ -128,26 +112,22 @@ $subscription = $customerData['subscription'];
             </div>
         </section>
 
-        <!-- Value-Based System Section -->
         <section id="value-based-system">
             <h2><a href="../views/value-based-customer.php">Value-Based System</a></h2>
             <p>Donate points to charity organizations.</p>
         </section>
 
-        <!-- Categories Section -->
         <section id="categories">
             <h2><a href="../views/offer-home.php">Categories</a></h2>
             <p>Explore rewards in various categories.</p>
         </section>
 
-        <!-- Offers Section -->
         <section id="offers">
             <h2><a href="../views/offer-home.php">Best Offers</a></h2>
             <p>Check out the best offers from all categories.</p>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="glass-footer">
         <p>Follow us on:</p>
         <ul>

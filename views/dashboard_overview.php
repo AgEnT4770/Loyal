@@ -1,17 +1,14 @@
 <?php
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
-// Ensure admin is logged in
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: index.html");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
 
-// Fetch client data from the database
 $sql = "SELECT name, email, subscription FROM users WHERE role = 'customer'";
 $stmt = $db->prepare($sql);
 $stmt->execute();

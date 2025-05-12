@@ -1,4 +1,3 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +13,7 @@ header {
   justify-content: space-between;
   box-sizing: border-box;
 }
-/* Body */
+
 body {
   background-image: url('background.jpg');
   background-size: cover;
@@ -33,10 +32,10 @@ main {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-image: url('background.jpg'); /* Replace with your image path */
-    background-size: cover; /* Ensures the image covers the full page */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 main h1 {
@@ -52,7 +51,6 @@ main h1 {
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Sections */
 section {
   margin: 20px 0;
   padding: 25px;
@@ -108,7 +106,6 @@ section p a:hover {
   text-decoration: underline;
 }
 
-/* Tier Boxes */
 .tier-boxes {
   display: flex;
   justify-content: space-between;
@@ -153,7 +150,6 @@ section p a:hover {
   opacity: 1;
 }
 
-/* Tier Colors */
 .tier-box.gold h3,
 .tier-box.gold p {
   color: #ffb300;
@@ -263,7 +259,6 @@ section p a:hover {
   transform: translate(50%, -50%);
 }
 
-/* Links (Pay Now, Subscribe, Donate Now) */
 .pay-btn,
 .subscribe-btn,
 .donate-btn {
@@ -288,7 +283,6 @@ section p a:hover {
   transform: scale(1.05);
 }
 
-/* Subscription Dropdowns */
 .subscription-form .options {
   display: flex;
   justify-content: center;
@@ -325,7 +319,6 @@ section p a:hover {
   font-size: 14px;
 }
 
-/* Footer */
 .glass-footer {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
@@ -356,7 +349,6 @@ section p a:hover {
   color: #d4faff;
 }
 
-/* Animations */
 @keyframes fadeIn {
   0% {
     opacity: 0;

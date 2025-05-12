@@ -1,21 +1,16 @@
 <?php
-session_start(); // Start session
-require_once '../db.php'; // Include database connection
-require_once '../models/Merchant.php'; // Include Merchant class
+session_start();
+require_once '../db.php';
+require_once '../models/Merchant.php';
 
-// Redirect to login if merchant is not logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'merchant') {
     header("Location: login.php");
     exit();
 }
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
-
-// Ensure no output before header redirection
 ob_start();
 
-// Handle offer addition
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add-offer'])) {
     $offerDetails = $_POST['offer-details'];
     $rating = $_POST['rating'];
@@ -32,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add-offer'])) {
     }
 }
 
-// Handle offer deletion
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-offer'])) {
     $offerId = $_POST['offer-id'];
 
@@ -48,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-offer'])) {
     }
 }
 
-// Handle offer update
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update-offer'])) {
     $offerId = $_POST['offer-id'];
     $newOfferDetails = $_POST['offer-details'];
@@ -66,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update-offer'])) {
     }
 }
 
-// Fetch merchant offers
 $merchantId = $_SESSION['user_id'];
 $sql = "SELECT id, offer_details, rating FROM offers WHERE merchant_id = ?";
 $stmt = $db->prepare($sql);
@@ -74,8 +66,6 @@ $stmt->bind_param("i", $merchantId);
 $stmt->execute();
 $result = $stmt->get_result();
 $offers = $result->fetch_all(MYSQLI_ASSOC);
-
-// Ensure no output before header redirection
 ob_end_flush();
 ?>
 
@@ -100,8 +90,7 @@ ob_end_flush();
     <main>
         <section id="merchants">
             <h2>Offers</h2>
-
-            <!-- Display Success or Error Messages -->
+            
             <?php if (isset($_GET['success'])) { ?>
                 <p class="success-message"><?php echo htmlspecialchars($_GET['success']); ?></p>
             <?php } ?>

@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,6 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Header */
 header {
     background: linear-gradient(90deg, rgb(28, 172, 255), #43bbcb);
     padding: 15px 30px;
@@ -25,7 +23,6 @@ nav ul li a {
     transition: all 0.3s ease;
 }
 
-/* Body */
 body {
     background-image: url('background.jpg');
     min-height: 100vh;
@@ -33,7 +30,6 @@ body {
     position: relative;
 }
 
-/* Main Content */
 main {
     margin-top: 100px;
     display: flex;
@@ -42,7 +38,6 @@ main {
     width: 100%;
 }
 
-/* Merchants Section */
 #merchants {
     background: #a7f6ff4f; 
     border-radius: 15px;
@@ -67,7 +62,6 @@ main {
     font-weight: 700;
 }
 
-/* Offer Form */
 .add-offer-container {
     background: #ffffff;
     padding: 20px;
@@ -116,7 +110,6 @@ main {
     transform: scale(1.05);
 }
 
-/* Merchant Box */
 .merchant-box {
     display: flex;
     flex-direction: column;
@@ -146,7 +139,6 @@ main {
     line-height: 1.5;
 }
 
-/* Merchant Actions */
 .merchant-actions {
     display: flex;
     gap: 10px;
@@ -170,7 +162,6 @@ main {
     transform: scale(1.05);
 }
 
-/* Animations */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -182,7 +173,6 @@ main {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     #merchants {
         padding: 15px;
@@ -240,7 +230,7 @@ main {
         padding: 8px;
     }
 }
-/* Update Offer Form */
+
 .update-form {
     display: flex;
     flex-direction: column;
@@ -262,8 +252,7 @@ main {
     outline: none;
 }
 
-/* Increase width of rating input */
 .update-form input[name="rating"] {
     width: 100%;
-    max-width: 200px; /* Adjust width for better visibility */
+    max-width: 200px;
 }

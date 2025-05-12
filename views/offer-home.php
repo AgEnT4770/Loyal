@@ -1,16 +1,12 @@
 <?php
 session_start();
-require_once '../db.php'; // Include database connection
+require_once '../db.php';
 
-// Get database connection
 $db = Database::getInstance()->getConnection();
-
-// Handle feedback submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-feedback'])) {
     $customerName = $_POST['name'];
     $feedbackText = $_POST['feedback'];
 
-    // Validate input
     if (!empty($customerName) && !empty($feedbackText)) {
         $sql = "INSERT INTO feedback (customer_name, feedback_text) VALUES (?, ?)";
         $stmt = $db->prepare($sql);
@@ -29,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-feedback'])) {
     }
 }
 
-// Fetch feedback for admin dashboard
 $sql = "SELECT customer_name, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
 $result = $db->query($sql);
 $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
@@ -126,8 +121,6 @@ $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
         <h2>What Our Users Say</h2>
         <div class="feedback-container">
             
-
-            <!-- Dynamically Display Feedback from Database -->
             <?php foreach ($feedbacks as $feedback) { ?>
                 <div class="feedback-card">
                     <h4><?php echo htmlspecialchars($feedback['customer_name']); ?></h4>

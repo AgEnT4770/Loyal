@@ -115,7 +115,7 @@ button:hover {
 .delete-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(90deg, #ff4444, #ff6666); /* لون أحمر للدلالة على الخطر */
+    background: linear-gradient(90deg, #ff4444, #ff6666);
     border: none;
     border-radius: 5px;
     color: white;
@@ -203,7 +203,6 @@ button:hover {
     color: #d4faff;
   }
   
-  /* Animations */
   @keyframes fadeIn {
     0% {
       opacity: 0;
