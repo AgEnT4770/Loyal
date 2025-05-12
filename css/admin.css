@@ -124,13 +124,16 @@ main {
 
 
 main h1 {
-    padding-top: 50px;
-    color: #ffffff !important; 
-    font-size: 2.2em;
+    padding-top:50px;
+    color: #ffffff;
+    font-size: 2.8em;
     margin-bottom: 40px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, rgb(161, 227, 255), rgb(0, 162, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
 }
 

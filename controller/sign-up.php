@@ -78,7 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="signup-box">
             <h1 class="logo">Loyal</h1>
             <h2>Sign Up for an Account</h2>
-            
             <?php if (!empty($error_message)) { ?>
                 <p class="error-message"><?php echo htmlspecialchars($error_message); ?></p>
             <?php } ?>
