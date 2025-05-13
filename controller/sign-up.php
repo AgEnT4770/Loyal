@@ -1,22 +1,22 @@
 <?php
-include '../db.php';
-include '../models/User.php';
-include '../models/Admin.php';
-include '../models/Merchant.php';
-include '../models/Customer.php';
 session_start();
-
-$error_message = "";
+require_once '../db.php';
+require_once '../models/User.php';
+require_once '../models/Admin.php';
+require_once '../models/Merchant.php';
+require_once '../models/Customer.php';
 
 $db = Database::getInstance()->getConnection();
+$error_message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $role = $_POST['user-type'];
+    $name = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $role = trim($_POST['user-type']);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $check_sql = "SELECT * FROM users WHERE name = ? OR email = ?";
+    $check_sql = "SELECT id FROM users WHERE name = ? OR email = ?";
     $check_stmt = $db->prepare($check_sql);
     $check_stmt->bind_param("ss", $name, $email);
     $check_stmt->execute();
@@ -26,27 +26,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "The email or username already exists. Please choose another.";
     } else {
         if ($role === "admin") {
-            $newUser = new Admin(null, $name, $email, $password);
+            $newUser = new Admin(null, $name, $email, $hashed_password);
         } elseif ($role === "merchant") {
-            $newUser = new Merchant(null, $name, $email, $password, $name); // Merchant name same as username for now
+            $newUser = new Merchant(null, $name, $email, $hashed_password, $name);
         } elseif ($role === "customer") {
-            $newUser = new Customer(null, $name, $email, $password, 0, "None"); // Customers start with 0 loyalty points
+            $newUser = new Customer(null, $name, $email, $hashed_password, 0, "None");
         } else {
-            $error_message = "Invalid role selected.";
-            header("Location: sign-up.php?error=" . urlencode($error_message));
+            header("Location: sign-up.php?error=" . urlencode("Invalid role selected."));
             exit();
         }
 
         $sql = "INSERT INTO users (name, email, password, role, subscription, loyaltyPoints, merchant_name) VALUES (?, ?, ?, ?, 'None', 0, ?)";
         $stmt = $db->prepare($sql);
-        $stmt->bind_param("sssssi", 
-            $newUser->getName(), 
-            $newUser->getEmail(), 
-            password_hash($password, PASSWORD_DEFAULT),
-            $newUser->getRole(),
-            ($role === "customer" ? NULL : $newUser->getName())
-);
-
+        $merchant_name = ($role === "customer") ? NULL : $newUser->getName();
+        $stmt->bind_param("sssss", $newUser->getName(), $newUser->getEmail(), $hashed_password, $newUser->getRole(), $merchant_name);
 
         if ($stmt->execute()) {
             $_SESSION['user_id'] = $db->insert_id;
@@ -54,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $newUser->getEmail();
             $_SESSION['role'] = $newUser->getRole();
 
-            header("Location: " . ($newUser->getRole() === "customer" ? "customer.php" : ($newUser->getRole() === "merchant" ? "../views/merchant-dashboard.php" : "../views/admin.php")));
+            $redirect_url = ($newUser->getRole() === "customer") ? "customer.php" : ($newUser->getRole() === "merchant" ? "../views/merchant-dashboard.php" : "../views/admin.php");
+            header("Location: $redirect_url");
             exit();
         } else {
             $error_message = "An error occurred during signup. Please try again.";
